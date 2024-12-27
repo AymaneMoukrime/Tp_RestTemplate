@@ -59,6 +59,23 @@ public class CarService {
         carRepository.deleteById(id);
     }
 
+    public List<CarResponse> searchCars(String matricule, String marque, String model) {
+        List<Car> cars;
+        if (matricule != null && marque != null && model != null) {
+            cars = carRepository.findByMatriculeAndBrandAndModel(matricule, marque, model);
+        } else if (matricule != null) {
+            cars = carRepository.findByMatriculeContainingIgnoreCase(matricule);
+        } else if (marque != null) {
+            cars = carRepository.findByBrandContainingIgnoreCase(marque);
+        } else if (model != null) {
+            cars = carRepository.findByModelContainingIgnoreCase(model);
+        } else {
+            cars = carRepository.findAll();
+        }
+        return cars.stream()
+                .map(this::convertToCarResponse)  // Convert each car entity to CarResponse
+                .collect(Collectors.toList());
+    }
     private CarResponse convertToCarResponse(Car car) {
         Client client = clientService.getClientById(car.getClient_id());
         CarResponse carResponse = new CarResponse();

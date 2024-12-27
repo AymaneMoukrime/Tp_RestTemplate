@@ -21,7 +21,24 @@ export const updateVoiture = async (id, voiture) => {
   return response.data;
 };
 
-export const fetchVoituresByClientId = async (clientId) => {
-  const response = await axios.get(`${BASE_URL}/SERVICE-CAR/api/car/client/${clientId}`);
-  return response.data;
+export const searchVoitures = async (searchQuery) => {
+  try {
+    // Construct the search parameters
+    const params = {
+      matricule: searchQuery.matricule,
+      brand: searchQuery.brand,
+      model: searchQuery.model,
+    };
+    
+    // Make a GET request with query parameters
+    const response = await axios.get(`${BASE_URL}/SERVICE-CAR/api/car/search`, { params });
+    return response.data;  // Return the filtered list of cars
+  } catch (error) {
+    console.error("Error searching vehicles:", error);
+    return [];
+  }
+  
+};
+export const deleteVoiture = async (id) => {
+  await axios.delete(`${BASE_URL}/SERVICE-CAR/api/car/${id}`);
 };

@@ -30,7 +30,7 @@ public class VoitureApplication {
     @Bean
     public CommandLineRunner commandLineRunner(CarRepository carRepository) {
         return args -> {
-            carRepository.save(new Car(null,"Tayota","2022","M2515",1L));
+           carRepository.save(new Car(null,"Tayota","2022","M2515",1L));
             carRepository.save(new Car(null,"dacia","2022","M103",2L));
             carRepository.save(new Car(null,"Tayota","2022","M8515",3L));
         };

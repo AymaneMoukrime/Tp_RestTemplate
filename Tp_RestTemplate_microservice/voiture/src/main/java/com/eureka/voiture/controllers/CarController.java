@@ -29,4 +29,15 @@ public class CarController {
     public CarResponse update(@PathVariable Long id ,@RequestBody Car car){
         return carService.update(id,car);
     }
+    // Search endpoint for cars
+    @GetMapping("/search")
+    public List<CarResponse> searchCars(@RequestParam(required = false) String matricule,
+                                        @RequestParam(required = false) String marque,
+                                        @RequestParam(required = false) String model) {
+        return carService.searchCars(matricule, marque, model);
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id){
+        carService.delete(id);
+    }
 }
