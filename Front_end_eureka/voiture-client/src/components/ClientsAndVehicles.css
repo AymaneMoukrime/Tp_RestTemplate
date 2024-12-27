@@ -1,0 +1,54 @@
+.container {
+    padding: 20px;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .client-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .client-list li {
+    margin-bottom: 5px;
+  }
+  
+  .vehicle-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .vehicle-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .vehicle-table th,
+  .vehicle-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  .vehicle-table th {
+    background-color: #f4f4f4;
+  }
+  
+  .vehicle-table td {
+    text-align: left;
+  }
+  
+  button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
